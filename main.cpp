@@ -1,9 +1,92 @@
 #include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+#include <stdio.h>
+#include <fstream>
 
 using namespace std;
 
+string melangerLettres(string mot)
+{
+    string melange;
+    int position(0);
+
+    while (mot.size() != 0)
+    {
+        position = rand() % mot.size();
+
+        melange += mot[position];
+
+        mot.erase(position, 1);
+    }
+
+    return melange;
+}
+
+void clearConsole()
+{
+    std::system("cls");
+}
+
+string readFromDictionnary()
+{
+    ifstream fichier ("./dictionnary.txt");
+    int number;
+
+    number = rand() % 6;
+
+    if (fichier)
+    {
+        string ligne;
+
+        for (int i = 0; getline(fichier, ligne) && i < 7; i++)
+        {
+            if (i == number)
+            {
+                return ligne;
+            }
+        }
+    }
+    else
+    {
+        cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << endl;
+    }
+}
+
 int main()
 {
-    cout << "Hello world!" << endl;
+    string motMystere, motMelange, motUtilisateur;
+
+    srand(time(0));
+
+    cout << "Saisissez un mot ou appuyez sur 1 pour la selection d'un mot automatique" << endl;
+    cin >> motMystere;
+
+    if (motMystere == "1")
+    {
+        motMelange = melangerLettres(readFromDictionnary());
+    }
+    else
+    {
+        motMelange = melangerLettres(motMystere);
+        clearConsole();
+    }
+
+    do
+    {
+        cout << endl << "Quel est ce mot ? " << motMelange << endl;
+        cin >> motUtilisateur;
+
+        if (motUtilisateur == motMystere)
+        {
+            cout << "Bravo !" << endl;
+        }
+        else
+        {
+            cout << "Ce n'est pas le mot !" << endl;
+        }
+    } while (motUtilisateur != motMystere);
+
     return 0;
 }
