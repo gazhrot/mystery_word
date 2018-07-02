@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1530523688 source:c:\users\abruneaux\code\mystery_word\main.cpp
+	<iostream>
+	<string>
+	<ctime>
+	<cstdlib>
+	<stdio.h>
+	<fstream>
+

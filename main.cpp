@@ -57,6 +57,7 @@ string readFromDictionnary()
 void party()
 {
     string motMystere, motMelange, motUtilisateur, new_party;
+    int max_shot(5);
 
     srand(time(0));
 
@@ -91,7 +92,13 @@ void party()
         }
         else
         {
+            if (max_shot == 0)
+            {
+                cout << "La reponse etait " << motMystere << endl;
+            }
             cout << "Ce n'est pas le mot !" << endl;
+            cout << "Il vous reste " << max_shot << " essai." << endl;
+            max_shot--;
         }
     } while (motUtilisateur != motMystere);
 }
