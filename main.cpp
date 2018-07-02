@@ -92,9 +92,10 @@ void party()
         }
         else
         {
-            if (max_shot == 0)
+            if (max_shot < 1)
             {
                 cout << "La reponse etait " << motMystere << endl;
+                return;
             }
             cout << "Ce n'est pas le mot !" << endl;
             cout << "Il vous reste " << max_shot << " essai." << endl;
