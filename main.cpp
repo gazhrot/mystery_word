@@ -66,7 +66,9 @@ void party()
 
     if (motMystere == "1")
     {
-        motMelange = melangerLettres(readFromDictionnary());
+        motMystere = readFromDictionnary();
+        motMelange = melangerLettres(motMystere);
+        clearConsole();
     }
     else
     {
