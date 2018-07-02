@@ -84,10 +84,7 @@ void party()
             cout << "Voulez-vous faire une autre partie ? (o/N)" << endl;
             cin >> new_party;
             if (new_party == "o")
-            {
-                clearConsole();
                 party();
-            }
         }
         else
         {
